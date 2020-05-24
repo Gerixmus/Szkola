@@ -1,0 +1,47 @@
+<html>
+  <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></head>
+  <body>
+    <form>
+      <button type="submit" formaction="/dashboard">Back to dashboard</button>
+   </form>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Manufacturer</th>
+          <th scope="col">Model</th>
+          <th scope="col">Serial number</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for physical_resource in physical_resources %}
+          <tr>
+            <th scope="row">{{physical_resource.resourceIdP}}</th>
+            <td>{{physical_resource.resourceQuantityP}}</td>
+            <td>{{physical_resource.resourceManufacturer}}</td>
+            <td>{{physical_resource.resourceModel}}</td>
+            <td>{{physical_resource.resourceSerialNumber}}</td>
+            <td>
+              <form method="POST" action="./physical/delete" style="display: inline">
+                <input type="hidden" value="{{physical_resource.resourceIdP}}" name="resourceIdP">
+                <input type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr>
+            <form method="POST" action="/physical">
+              <th scope="row"><input type="text" name="resourceIdP"></th>
+              <td><input type="text" name="resourceQuantityP"></td>
+              <td><input type="text" name="resourceManufacturer"></td>
+              <td><input type="text" name="resourceModel"></td>
+              <td><input type="text" name="resourceSerialNumber"></td>
+              <td><input type="submit" value="Add"></td>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>

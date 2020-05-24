@@ -1,0 +1,46 @@
+<html>
+  <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></head>
+  <body>
+    <form>
+      <button type="submit" formaction="/dashboard">Back to dashboard</button>
+   </form>
+   <h1>All current bookings</h1>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Booking Id</th>
+          <th scope="col">Booking user Id</th>
+          <th scope="col">Booking name</th>
+          <th scope="col">Date (YYYY-MM-DD)</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for booking in bookings %}
+            <tr>
+                <th scope="row">{{booking.bookingId}}</th>
+                <td>{{booking.bookingUserId}}</td>
+                <td>{{booking.bookingName}}</td>
+                <td>{{booking.bookingDate}}</td>
+                <td>
+                <form method="POST" action="./bookings/delete" style="display: inline">
+                    <input type="hidden" value="{{booking.bookingId}}" name="bookingId">
+                    <input type="submit" value="Delete">
+                </form>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <form method="POST" action="/bookings">
+              <th scope="row"></th>
+              <td><input type="text" name="bookingUserId"></td>
+              <td><input type="text" name="bookingName"></td>
+              <td><input type="text" name="bookingDate"></td>
+              <td><input type="submit" value="Add"></td>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

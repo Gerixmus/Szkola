@@ -1,0 +1,28 @@
+<html>
+  <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></head>
+  <body>
+    <form>
+      <button type="submit" formaction="/dashboard">Back to dashboard</button>
+   </form>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Lab name</th>
+          <th scope="col">Lab type</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lab in labs %}
+          <tr>
+            <th scope="row">{{lab.labId}}</th>
+            <td>{{lab.labName}}</td>
+            <td>{{lab.labType}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
+
+

@@ -1,0 +1,11 @@
+{% extends "panel_with_side.html" %}
+{% block content %}
+{{ super() }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Welcome, {{ name }}</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}

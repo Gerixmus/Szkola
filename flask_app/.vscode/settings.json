@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "C:\\Users\\gerix\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": ["--load-plugins", "pylint-flask"]
+    
+
+}

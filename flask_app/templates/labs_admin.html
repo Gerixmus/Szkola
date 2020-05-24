@@ -1,0 +1,44 @@
+<html>
+  <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></head>
+  <body>
+    <form>
+      <button type="submit" formaction="/dashboard">Back to dashboard</button>
+   </form>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Lab name</th>
+          <th scope="col">Lab type</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lab in labs %}
+          <tr>
+            <th scope="row">{{lab.labId}}</th>
+            <td>{{lab.labName}}</td>
+            <td>{{lab.labType}}</td>
+            <td>
+              <form method="POST" action="./labs/delete" style="display: inline">
+                <input type="hidden" value="{{lab.labId}}" name="labId">
+                <input type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr>
+            <form method="POST" action="/labs">
+              <th scope="row"><input type="text" name="labId"></th>
+              <td><input type="text" name="labName"></td>
+              <td><input type="text" name="labType"></td>
+              <td><input type="submit" value="Add"></td>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+
+

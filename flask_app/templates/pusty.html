@@ -1,0 +1,45 @@
+<html>
+  <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></head>
+  <body>
+    <form>
+      <button type="submit" formaction="/dashboard">Back to dashboard</button>
+   </form>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Manufacturer</th>
+          <th scope="col">Version</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for virtual_resource in virtual_resources %}
+          <tr>
+            <th scope="row">{{virtual_resource.resourceIdV}}</th>
+            <td>{{virtual_resource.resourceQuantityV}}</td>
+            <td>{{virtual_resource.OSManufacturer}}</td>
+            <td>{{virtual_resource.OSVersion}}</td>
+            <td>
+              <form method="POST" action="./virtual/delete" style="display: inline">
+                <input type="hidden" value="{{virtual_resource.resourceIdV}}" name="resourceIdV">
+                <input type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr>
+            <form method="POST" action="/virtual">
+              <th scope="row"><input type="text" name="resourceIdV"></th>
+              <td><input type="text" name="resourceQuantityV"></td>
+              <td><input type="text" name="OSManufacturer"></td>
+              <td><input type="text" name="OSVersion"></td>
+              <td><input type="submit" value="Add"></td>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

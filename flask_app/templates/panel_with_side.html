@@ -1,0 +1,20 @@
+{% extends "panel.html" %}
+{% block content %}
+{{ super() }}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+          <li><a href="/labs">Labs</a></li>
+          <li><a href="/bookings">Bookings</a></li>
+          <li><a href="/calendar">Calendar</a></li>
+          {% if current_user.role == "admin" %}
+            <li><a href="/physical">Physical resources</a></li>
+            <li><a href="/virtual">Virtual resources</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+</div>
+{% endblock %}
